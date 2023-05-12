@@ -1,29 +1,49 @@
-version: '3.1'
+version: '3'
 
 services:
   # containers
   database:
     image: mysql:5.7
     container_name: mysql_compose
+    platform: linux/x86_64
     ports:
       - 3306:3306
     environment:
-      - MYSQL_ROOT_PASSWORD=root
+      MYSQL_ROOT_PASSWORD: 12345678
     volumes:
       - ./backend/database/mysql-seeder:/docker-entrypoint-initdb.d
 
   api:
-    build: ./backend
-    container_name: backend_compose
+    image: node:14
+    container_name: backend
+    tty: true
+    stdin_open: true
+    command: bash
+    restart: always
     ports:
       - 3333:3333
     depends_on:
       - database
+    working_dir: /app
+    volumes:
+      - ./backend/:/app
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 12345678
+      MYSQL_HOSTNAME: database
+      MYSQL_PORT: 3306
 
   web:
-    build: ./frontend
-    container_name: frontend_compose
+    image: node:14
+    container_name: frontend
+    tty: true
+    stdin_open: true
+    command: bash
     ports:
       - 3000:3000
     depends_on:
       - api
+    working_dir: /app
+    volumes:
+      - ./frontend/:/app
+

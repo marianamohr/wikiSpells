@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import api from './utils/api';
+import React, { useState } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Context from "./context/context";
+import Feiticos from "./pages/Feiticos/Feiticos";
+import Personagens from "./pages/Personagens/Personagens";
 
 function App() {
-
-  const [instructors, setInstructors] = useState([]);
-
-  useEffect(() => {
-    api.get('/').then(response => { setInstructors(response.data) });
-  }, []);
-
-
+  const [id, setId] = useState([]);
+  const [personagens, setPersonagens] = useState([]);
   return (
-    <div className="App">
-      <div className="App-header">
-        <p>Proggraming Languages</p>
-        {
-          instructors.map(p => (
-            <span>{p.name} - {p.creator}</span>
-          ))}
-      </div>
+    <div>
+      <BrowserRouter>
+        <Switch>
+          <Context.Provider value={{ id, setId, personagens, setPersonagens }}>
+            <Route path="/personagens" component={Personagens} />
+            <Route path="/feiticos" component={Feiticos} />
+          </Context.Provider>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from "react";
+import api from "../../utils/api";
+import "./personagem.css";
+
+function Personagens() {
+  const [personagens, setPerosnagens] = useState([]);
+
+  useEffect(() => {
+    api.get("/personagens").then((response) => {
+      setPerosnagens(response.data);
+    });
+  }, []);
+
+  return (
+    <div className="container">
+      <div className="itens">
+        <p>Personagens</p>
+        {personagens.map((p) => (
+          <div className="card">
+            <div>{p.nome}</div>
+            <div>{p.casa}</div>
+            <a>
+              <button
+                type="button"
+                onClick={() => {
+                  this.props.history.push("/about");
+                }}
+              >
+                {" "}
+                Infos{" "}
+              </button>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Personagens;

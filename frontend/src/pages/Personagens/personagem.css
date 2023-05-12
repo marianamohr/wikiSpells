@@ -1,0 +1,42 @@
+body {
+    background-image: url('../../../public/Hogwarts-Emblema.png');
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+  .flex-container {
+    display: flex;
+    .itens {
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-left: 50px;
+      .card {
+        border-radius: 5px;
+        background-color: black;
+        padding: 20px;
+        margin: 35px;
+        width: 100px;
+        .dados {
+          margin: 10px;
+          .nome {
+          color: white;
+          margin-bottom: 5px;
+        }
+        .casa {
+          color: white;
+        }
+        } 
+      }
+    }
+  }
+  .btn {
+    background-color: grey;
+    border-radius: 5px;
+    margin: 1px;
+  }
+  .novo-personagem {
+    background-color: grey;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 37px;
+  }
+}

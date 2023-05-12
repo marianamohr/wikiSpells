@@ -1,24 +1,6 @@
-const express = require('express');
-const cors = require('cors');
-const connection = require('./database/connection');
-
-const app = express();
+const app = require("./src/app");
 const PORT = process.env.PORT || 3333;
 
-app.use(cors());
-
-app.get('/', async (_req, res) => {
-  try {
-    const [instructors] = await connection.execute(
-      'SELECT * FROM technology.language',
-    );
-
-    // HI
-
-    return res.status(200).json(instructors);
-  } catch (e) {
-    return res.status(500).send(e);
-  }
+app.listen(PORT, () => {
+  console.log("Api no ar na porta", PORT);
 });
-
-app.listen(PORT);
