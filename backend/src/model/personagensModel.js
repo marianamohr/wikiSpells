@@ -34,4 +34,16 @@ const create = async ({ nome, casa_id }) => {
   console.log("response", response);
   return { id: insertId, nome, casa: response.casa };
 };
-module.exports = { getAll, getById, create };
+
+const remove = async (id) => {
+  await connection.execute(
+    `DELETE FROM wikiSpells.personagem_feiticos WHERE personagem_id = ?;`,
+
+    [id]
+  );
+
+  await connection.execute(`DELETE FROM wikiSpells.personagens WHERE id = ?;`, [
+    id,
+  ]);
+};
+module.exports = { getAll, getById, create, remove };

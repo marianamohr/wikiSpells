@@ -22,7 +22,12 @@ function Personagens() {
 
   const handleClickEdit = (id) => {
     setId(id);
-    history.push("/feiticos");
+    api.delete(`/personagens/${id}`).then((response) => {
+      api.get("/personagens").then((response) => {
+        setPersonagens(response.data);
+      });
+    });
+    history.push("/personagens");
   };
 
   const handleClickNovoPersonagem = (id) => {
@@ -34,28 +39,30 @@ function Personagens() {
     <div className="flex-container">
       <div className="itens">
         <h1>Personagens</h1>
-        {personagens.map((p) => (
-          <div className="card">
-            <div className="dados">
-              <div className="nome">{p.nome}</div>
-              <div className="casa">{p.casa}</div>
+        <div className="flex-container">
+          {personagens.map((p) => (
+            <div className="card">
+              <div className="dados">
+                <div className="nome">{p.nome}</div>
+                <div className="casa">{p.casa}</div>
+              </div>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => handleClick(p.id)}
+              >
+                Feitiços
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => handleClickEdit(p.id)}
+              >
+                Deletar
+              </button>
             </div>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => handleClick(p.id)}
-            >
-              Infos
-            </button>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => handleClickEdit(p.id)}
-            >
-              Editar
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
         <button
           type="button"
           className="novo-personagem"

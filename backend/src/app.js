@@ -20,6 +20,9 @@ app.get("/", async (_req, res) => {
 app.get("/personagens", personagensController.getAll);
 app.get("/personagens/:id", personagensController.getById);
 app.post("/personagens", personagensController.create);
+app.delete("/personagens/:id", personagensController.remove);
+app.get("/feiticos/", feiticosController.getAll);
+app.post("/feiticos", feiticosController.create);
 app.get("/feiticos/:personagem_id", feiticosController.getByPersonsagemId);
 
 module.exports = app;

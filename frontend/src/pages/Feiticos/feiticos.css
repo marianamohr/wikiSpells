@@ -1,40 +1,55 @@
-import React, { useEffect, useState } from "react";
-import api from "../../utils/api";
-import "./personagem.css";
+body {
+  background-color: rgb(68, 68, 68);
+  
+  .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+        .flex-table {
+          width: 400px;
+          border-collapse: collapse;
+          margin: 25px;
+          background-color: gray;
+        }
+    
+        .flex-table th,
+        .flex-table td {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+    
+        .flex-cell {
+          align-items: center;
+          justify-content: center;
+        }
 
-function Personagens() {
-  const [personagens, setPerosnagens] = useState([]);
+  .btn {
+    background-color: grey;
+    border-radius: 5px;
+    margin: 1px;
+  }
 
-  useEffect(() => {
-    api.get("/personagens").then((response) => {
-      setPerosnagens(response.data);
-    });
-  }, []);
+  .novo-feitico {
+    background-color: grey;
+    border-radius: 5px;
+    padding: 15px;
+  }
+  .div-novo-feitico {
+    margin: 25px;
+  }
+  .div-novo-feitico form select {
+   padding: 10px;
+   margin-right: 10px;
+   border-radius: 5px;
+   font-size: 20px;
+  }
 
-  return (
-    <div className="container">
-      <div className="itens">
-        <p>Personagens</p>
-        {personagens.map((p) => (
-          <div className="card">
-            <div>{p.nome}</div>
-            <div>{p.casa}</div>
-            <a>
-              <button
-                type="button"
-                onClick={() => {
-                  this.props.history.push("/about");
-                }}
-              >
-                {" "}
-                Infos{" "}
-              </button>
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  .add-feitico {
+    background-color: grey;
+    border-radius: 5px;
+    padding: 15px;
+  }
 }
-
-export default Personagens;

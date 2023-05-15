@@ -1,7 +1,12 @@
 const connection = require("../../database/connection");
 
+const getAll = async (id) => {
+  const [feiticos] = await connection.execute(
+    `SELECT * FROM wikiSpells.feiticos;`
+  );
+  return feiticos;
+};
 const getByPersonsagemId = async (id) => {
-  console.log(id);
   const [personagem] = await connection.execute(
     `SELECT  p.nome as nome, f.nome as feitico, pf.data_execucao as data
     FROM wikiSpells.personagem_feiticos as pf
@@ -14,5 +19,12 @@ const getByPersonsagemId = async (id) => {
   );
   return personagem;
 };
+const create = async (id, novoFeitico) => {
+  const [personagemCreated] = await connection.execute(
+    `INSERT INTO wikiSpells.personagem_feiticos (personagem_id, feitico_id, data_execucao) VALUES (?, ?, NOW());`,
+    [id, novoFeitico]
+  );
+  return personagemCreated;
+};
 
-module.exports = { getByPersonsagemId };
+module.exports = { getByPersonsagemId, getAll, create };
