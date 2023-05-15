@@ -16,7 +16,6 @@ function Feiticos() {
   } = useContext(Context);
   const [novoFeiticostatus, setnovoFeiticoStatus] = useState(false);
   const [novoFeitico, setnovoFeitico] = useState({});
-  const [user, setUser] = useState({});
 
   useEffect(() => {
     api.get(`/feiticos/${id}`).then((response) => {

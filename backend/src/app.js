@@ -1,8 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const connection = require("../database/connection");
-const personagensController = require("./controller/personagensController");
-const feiticosController = require("./controller//feiticosController");
+const feiticosRouter = require("./routes/feiticosRoutes");
+const personagensRouter = require("./routes/personagensRouter");
 
 const app = express();
 app.use(express.json());
@@ -17,12 +16,7 @@ app.get("/", async (_req, res) => {
   }
 });
 
-app.get("/personagens", personagensController.getAll);
-app.get("/personagens/:id", personagensController.getById);
-app.post("/personagens", personagensController.create);
-app.delete("/personagens/:id", personagensController.remove);
-app.get("/feiticos/", feiticosController.getAll);
-app.post("/feiticos", feiticosController.create);
-app.get("/feiticos/:personagem_id", feiticosController.getByPersonsagemId);
+app.use("/personagens", personagensRouter);
+app.use("/feiticos", feiticosRouter);
 
 module.exports = app;
