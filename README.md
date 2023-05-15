@@ -57,12 +57,12 @@ O retorno deve conter 3 containers ativos `frontend` | `backend` | `mysql`.
 
 ### Acessando o backend
 
-Acesse o container frontEnd com o seguinte comando `docker exec -it backend bash`, e rode o comando `npm run dev`. A API estará sendo executada na porta 3333, é possível verificar o acesso em uma rota GET `http://localhost:3333` o retorno é um objeto com a message,
+Acesse o container frontEnd com o seguinte comando `docker exec -it backend bash`, rode o comando `npm install` para instalar as dependencias e o `npm run dev` para iniciar a Aplicação. A API estará sendo executada na porta 3333, é possível verificar o acesso em uma rota GET `http://localhost:3333` o retorno é um objeto com a message,
 `"message": "API no Ar"`.
 
 ### Acessando o frontend
 
-Acesse o container frontEnd com o seguinte comando `docker exec -it frontend bash`, e rode o comando `npm start`. A página do frontend deve ser renderizado no endereço `http://localhost:3000`, sua página inicial renderiza os dados retornados da api.
+Acesse o container frontEnd com o seguinte comando `docker exec -it frontend bash`, rode o comando `npm install` para instalar as dependencias e o `npm start` para iniciar a Aplicação. A página do frontend deve ser renderizado no endereço `http://localhost:3000`, sua página inicial renderiza os dados retornados da api.
 
 ### Realizando pull request
 
