@@ -62,7 +62,7 @@ Acesse o container frontEnd com o seguinte comando `docker exec -it backend bash
 
 ### Acessando o frontend
 
-Acesse o container frontEnd com o seguinte comando `docker exec -it frontend bash`, rode o comando `npm install` para instalar as dependencias e o `npm start` para iniciar a Aplicação. A página do frontend deve ser renderizado no endereço `http://localhost:3000`, sua página inicial renderiza os dados retornados da api.
+Acesse o container frontEnd com o seguinte comando `docker exec -it frontend bash`, rode o comando `npm install` para instalar as dependencias e o `npm start` para iniciar a Aplicação. A página do frontend deve ser renderizado no endereço `http://localhost:3000/personagens`, sua página inicial renderiza os dados retornados da api.
 
 ### Realizando pull request
 
