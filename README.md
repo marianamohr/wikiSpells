@@ -2,7 +2,8 @@
 
 ## Boas vindas
 
-Este é um exemplo de como utilizar o [Docker Compose](https://docs.docker.com/compose/install/) para iniciar três aplicações containerizadas, sendo elas: 
+Este é um exemplo de como utilizar o [Docker Compose](https://docs.docker.com/compose/install/) para iniciar três aplicações containerizadas, sendo elas:
+
 1. [MySQL](https://www.mysql.com/)
 2. [API com Node.js](https://nodejs.org/en/)
 3. [SPA com React.js](https://reactjs.org/)
@@ -22,50 +23,49 @@ Siga este passo a passo para testar este repositório.
 Clone o repositório para sua máquina local
 
 ```
-$ git clone git@github.com:Thiago-Mariotto/docker-compose-example.git
+$ git clone git@github.com:marianamohr/wikiSpells.git
 ```
 
 Acesse a pasta
 
 ```
-$ cd docker-compose-example
+$ cd wikiSpells
 ```
 
 Inicie a aplicação com o Docker Compose
 
 ```
-$ docker-compose up --build
+$ docker-compose up -d
 ```
+
 O comando acima realiza o build do arquivo `docker-compose.yml` construindo todas as imagens necessárias e inicializa todos os containers configurados.
 
 ## Como utilizar?
 
 1. Cetifique-se de seguir todos os passos de instação.
 2. Verifique se todos os containers foram iniciados.
- 
-```sh 
+
+```sh
 $ docker ps
 ```
 
 O retorno deve conter 3 containers ativos `frontend` | `backend` | `mysql`.
 
-### Acessando o frontend
+### Acessando o banco de dados
 
-A página do frontend deve ser renderizado no endereço `http://localhost:3000`, sua página inicial renderiza os dados retornados da api.
+É possível acessa-lo pela porta `3306` do seu `localhost` ou `127.0.0.1` a senha de acesso é `12345678`.
 
 ### Acessando o backend
 
-A API estará sendo executada na porta 3333, é possível verificar o acesso em uma rota GET `http://localhost:3333` o retorno é um Array de pessoas instrutoras e suas frases.
+Acesse o container frontEnd com o seguinte comando `docker exec -it backend bash`, e rode o comando `npm run dev`. A API estará sendo executada na porta 3333, é possível verificar o acesso em uma rota GET `http://localhost:3333` o retorno é um objeto com a message,
+`"message": "API no Ar"`.
 
-### Acessando o banco de dados
+### Acessando o frontend
 
-O banco de dados é populado com um script que está localizado na pasta `backend/mysql-dump` quando o container é inicializado.
-
-É possível acessa-lo pela porta `3306` do seu `localhost` ou `127.0.0.1` a senha de acesso é `docker`.
+Acesse o container frontEnd com o seguinte comando `docker exec -it frontend bash`, e rode o comando `npm start`. A página do frontend deve ser renderizado no endereço `http://localhost:3000`, sua página inicial renderiza os dados retornados da api.
 
 ### Realizando pull request
 
 Certifique-se de executar `npm run lint` na pasta do backend, existe uma action de validação.
-
 
 ## Aproveite :)

@@ -10,7 +10,7 @@ app.use(cors());
 
 app.get("/", async (_req, res) => {
   try {
-    return res.status(200).json({ mesage: "API no Ar" });
+    return res.status(200).json({ message: "API no Ar" });
   } catch (e) {
     return res.status(500).send(e);
   }
