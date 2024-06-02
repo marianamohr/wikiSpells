@@ -38,10 +38,10 @@ function Personagens() {
           />
           <select value={casa_id} onChange={handleChange}>
             <option value="">Selecione</option>
-            <option value="1">Griffindor</option>
-            <option value="2">Revenclaw</option>
-            <option value="3">Huffle-Puff</option>
-            <option value="4">Silderyn</option>
+            <option value="1">Gryffindor</option>
+            <option value="2">Hufflepuff</option>
+            <option value="3">Ravenclaw</option>
+            <option value="4">Slytherin</option>
           </select>
           <button type="submit">Salvar</button>
         </form>

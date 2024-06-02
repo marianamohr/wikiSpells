@@ -26,13 +26,16 @@ function Feiticos() {
   const handleClickNovofeitico = () => {
     setnovoFeiticoStatus(!novoFeiticostatus);
     api.get(`/feiticos`).then((response) => {
-      setFeiticos(response.data);
+      const feiticosArray1 = feiticosPersonagem.map((item) => item.feitico);
+      const array2Filtrado = response.data.filter(
+        (item) => !feiticosArray1.includes(item.nome)
+      );
+      setFeiticos(array2Filtrado);
     });
-
-    console.log(listFeiticos);
   };
 
   const handleChange = (e) => {
+    console.log(e.target.value);
     setnovoFeitico(e.target.value);
   };
 
@@ -67,7 +70,7 @@ function Feiticos() {
         <div className="div-novo-feitico">
           <form
             onSubmit={(e) => {
-              console.log(novoFeitico);
+              console.log("XXXXX", novoFeitico);
               e.preventDefault();
               api.post("/feiticos", { id, novoFeitico }).then((response) => {
                 history.push("/personagens");
