@@ -5,8 +5,7 @@
 	"editor.formatOnType": true,
 	"editor.tabSize": 2,
 	"editor.codeActionsOnSave": {
-		"source.fixAll": true,
-		"source.organizeImports": true
-		// ...
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit"
 	}
 }
