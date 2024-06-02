@@ -14,7 +14,7 @@ services:
       - ./backend/database/mysql-seeder:/docker-entrypoint-initdb.d
 
   api:
-    image: node:14
+    image: node:21
     container_name: backend
     tty: true
     stdin_open: true
