@@ -2,6 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const feiticosRouter = require("./routes/feiticosRoutes");
 const personagensRouter = require("./routes/personagensRouter");
+const connection = require("../database/mongo/db.mongo");
+const config = require("./config/config");
+
+if (config.persistence === "mongo") {
+  connection();
+}
 
 const app = express();
 app.use(express.json());

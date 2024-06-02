@@ -19,7 +19,6 @@ const getById = async (id) => {
      WHERE p.id = ?;`,
     [id]
   );
-  console.log(personagem);
   return personagem;
 };
 const create = async ({ nome, casa_id }) => {

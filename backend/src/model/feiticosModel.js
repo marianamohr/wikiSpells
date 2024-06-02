@@ -27,4 +27,12 @@ const create = async (id, novoFeitico) => {
   return personagemCreated;
 };
 
-module.exports = { getByPersonsagemId, getAll, create };
+const getById = async (id) => {
+  const [feitico] = await connection.execute(
+    `SELECT * FROM wikiSpells.feiticos WHERE id = ?;`,
+    [id]
+  );
+  return feitico;
+};
+
+module.exports = { getByPersonsagemId, getAll, create, getById };

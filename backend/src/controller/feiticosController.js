@@ -22,9 +22,11 @@ const getByPersonsagemId = async (req, res) => {
 const create = async (req, res) => {
   try {
     const { id, novoFeitico } = req.body;
+    console.log("id", id, "novoFeitico", novoFeitico);
     const personagemCreated = await feiticosService.create(id, novoFeitico);
     return res.status(200).json(personagemCreated);
   } catch (e) {
+    console.log(e);
     return res.status(500).send(e);
   }
 };
