@@ -41,8 +41,8 @@ INSERT INTO
 VALUES ("Harry Potter", 1),
     ("Ron Weasley", 1),
     ("Hermione Granger", 1),
-    ("Mariana Mohr", 1),
-    ("Draco Malfoy", 3);
+    ("Mariana Mohr", 3),
+    ("Draco Malfoy", 4);
 
 CREATE TABLE wikiSpells.feiticos (
     id INT PRIMARY KEY AUTO_INCREMENT,
