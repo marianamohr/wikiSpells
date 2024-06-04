@@ -1,7 +1,6 @@
 // const feiticosModel = require("../model/feiticosModel");
-const personagensModel = require("../model/personagensModel");
+
 const nodemailer = require("../pkg/mail/mail");
-const sendgrid = require("../pkg/mail/sendgrid");
 
 const factory = require("../factory/factory");
 
@@ -19,11 +18,7 @@ const create = async (idAluno, novoFeitico) => {
   const [personagem] = await factory.personagens.getById(idAluno);
   const [feitico] = await factory.feiticos.getById(novoFeitico);
 
-  if (config.isNodemailer) {
-    nodemailer.emailNovoFeitico(personagem.nome, feitico.nome);
-  } else {
-    sendgrid.emailNovoFeitico(personagem.nome, feitico.nome);
-  }
+  await nodemailer.emailNovoFeitico(personagem.nome, feitico.nome);
 
   return feiticoCreated;
 };
