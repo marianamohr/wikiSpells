@@ -8,18 +8,20 @@ const getAll = async () => {
   const list = await factory.feiticos.getAll();
   return list;
 };
+
 const getByPersonsagemId = async (id) => {
   const list = await factory.feiticos.getByPersonsagemId(Number(id));
   return list;
 };
+
 const create = async (idAluno, novoFeitico) => {
-  // validar se o personagem já executou esse feitiço anteriormente
   const feiticoCreated = await factory.feiticos.create(idAluno, novoFeitico);
   const [personagem] = await factory.personagens.getById(idAluno);
   const [feitico] = await factory.feiticos.getById(novoFeitico);
-
-  await nodemailer.emailNovoFeitico(personagem.nome, feitico.nome);
-
+  // se tava na escola, pode fazer feitiço vaidacao por local
+  // validacao por data
+  //
+  nodemailer.emailNovoFeitico(personagem.nome, feitico.nome);
   return feiticoCreated;
 };
 

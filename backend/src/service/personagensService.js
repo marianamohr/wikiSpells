@@ -1,4 +1,3 @@
-// const personagensModel = require("../model/personagensModel");
 const factory = require("../factory/factory");
 const getAll = async () => {
   const products = await factory.personagens.getAll();

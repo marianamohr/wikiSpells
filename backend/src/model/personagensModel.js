@@ -30,7 +30,6 @@ const create = async ({ nome, casa_id }) => {
     "SELECT * FROM wikiSpells.casas WHERE id = ?",
     [casa_id]
   );
-  console.log("response", response);
   return { id: insertId, nome, casa: response.casa };
 };
 
