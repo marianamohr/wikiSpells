@@ -1,6 +1,6 @@
 // const feiticosModel = require("../model/feiticosModel");
 
-const nodemailer = require("../pkg/mail/mail");
+const mail = require("../pkg/nodemailer/index");
 
 const factory = require("../factory/factory");
 
@@ -18,10 +18,9 @@ const create = async (idAluno, novoFeitico) => {
   const feiticoCreated = await factory.feiticos.create(idAluno, novoFeitico);
   const [personagem] = await factory.personagens.getById(idAluno);
   const [feitico] = await factory.feiticos.getById(novoFeitico);
-  // se tava na escola, pode fazer feitiço vaidacao por local
+  // se tava na escola, pode fazer feitiço validacao por local
   // validacao por data
-  //
-  nodemailer.emailNovoFeitico(personagem.nome, feitico.nome);
+  // mail.emailNovoFeitico(personagem.nome, feitico.nome);
   return feiticoCreated;
 };
 

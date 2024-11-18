@@ -3,19 +3,19 @@ const config = require("../config/config");
 const daoMongo = require("../dao/mongo");
 const daoMysql = require("../dao/mysql");
 
-console.log(`Using ${config.persistence}`);
+// console.log(`Using ${config.persistence}`);
 
-let dto;
+let dao;
 
 switch (config.persistence) {
   case "mongo":
-    dto = daoMongo;
+    dao = daoMongo;
     break;
 
   case "mysql":
-    dto = daoMysql;
+    dao = daoMysql;
     break;
 }
-console.log(dto);
+// console.log(dao);
 
-module.exports = dto;
+module.exports = dao;

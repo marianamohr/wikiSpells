@@ -8,8 +8,8 @@ const personagemDTO = require("../dto/personagem.dto");
 
 const feiticos = {
   // retorna todos os feiticos da collection de feiticos
-  getAll: () => {
-    const users = [
+  getAll: async () => {
+    /* const users = [
       {
         id: 10,
         name: "Harry Potter",
@@ -20,7 +20,9 @@ const feiticos = {
         name: "Draco Malfoy",
         house: "Slytherin",
       },
-    ];
+    ];*/
+    const users = await Personagem.find();
+
     const userDto = users.map((u) => {
       return personagemDTO(u);
     });
@@ -29,14 +31,16 @@ const feiticos = {
 
   // retorna todos os feiticos de um personagem
   // que estáo armazenados na tabela personagem_feitico
-  getByPersonsagemId: (id) => {
-    const user = [
+  getByPersonsagemId: async (id) => {
+    /*const user = [
       {
         id: 10,
         name: "Harry Potter",
         house: "Gryffindor",
       },
-    ];
+    ];*/
+    const user = await Personagem.find({ _id: id });
+    return user;
   },
 
   // cria um novo feitico por usuario

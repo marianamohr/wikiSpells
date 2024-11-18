@@ -32,6 +32,7 @@ services:
       MYSQL_PASSWORD: 12345678
       MYSQL_HOSTNAME: database
       MYSQL_PORT: 3306
+      PERSISTENCE: mongo
 
   web:
     image: node:14
